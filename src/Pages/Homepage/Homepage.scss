@@ -1,0 +1,268 @@
+@import '../../partial';
+
+.mainHome {
+    width: 100%;
+    height: 100vh;
+    @include flex(column, space-between, center, 0px, wrap);
+    padding: 10px 20px 20px 20px;
+    position: relative;
+    overflow: hidden;
+
+    &>div {
+        z-index: 2;
+    }
+
+
+
+    .homeDiv1 {
+        @include flex(row, space-between, center, 0px, wrap);
+        width: 100%;
+        position: relative;
+
+        .homeLogo {
+            @include flex(row, center, center, 0px, wrap);
+
+            img {
+                height: 60px;
+            }
+
+            b {
+                font-size: 40px;
+            }
+        }
+
+        .homeInput {
+            border: 2px solid white;
+            @include flex(row, flex-start, center, 0px, wrap);
+            width: 400px;
+
+            input {
+                border: none;
+                outline: none;
+                height: 40px;
+                width: 350px;
+                color: aqua;
+            }
+
+            img {
+                padding: 5px;
+                height: 40px;
+            }
+        }
+
+        .more {
+            position: absolute;
+            top: 100%;
+            right: -15px;
+            @include flex(row, flex-end, center, 0px, wrap);
+            padding: 10px;
+            cursor: pointer;
+
+            span {
+                font-size: 20px;
+            }
+
+            img {
+                height: 50px;
+            }
+
+            &:hover {
+                background-color: aqua;
+            }
+        }
+    }
+
+    .homeDiv2 {
+        @include flex(row, center, center, 0px, wrap);
+        width: 100%;
+    }
+
+    .homeDiv3 {
+        @include flex(row, space-evenly, center, 0px, wrap);
+        width: 100%;
+
+        &>div {
+            @include flex(row, center, center, 10px, wrap);
+            font-size: 30px;
+
+            img {
+                height: 50px;
+            }
+        }
+    }
+
+    .homeDiv4 {
+        @include flex(row, space-between, center, 0px, wrap);
+        width: 100%;
+
+        &>div {
+            @include flex(row, space-between, center, 10px, wrap);
+            font-size: 25px;
+
+            img {
+                height: 40px;
+            }
+        }
+    }
+
+    .hamburger {
+        z-index: 4;
+        position: relative;
+        width: 100%;
+        height: 40vh;
+        position: absolute;
+        bottom: -35vh;
+        left: 0%;
+        transform: translate(-0%, 0%);
+        text-align: center;
+
+        img {
+            width: 20px;
+            height: 5vh;
+            cursor: pointer;
+        }
+
+        &>div {
+            background: linear-gradient(rgb(1, 109, 109),rgb(0, 175, 175));
+            border-radius: 20px;
+            height: 35vh;
+            @include flex(column, flex-start, flex-start, 10px, wrap);
+            padding: 10px 20px;
+            font-size: 20px;
+        }
+
+        .theme {
+            @include flex(row, center, center, 20px, wrap);
+            width: 220px;
+            height: fit-content;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            
+            &>div {
+                cursor: pointer;
+                @include flex(row, center, flex-end, 10px, wrap);
+            }
+
+            img {
+                height: 30px;
+            }
+        }
+    }
+
+    @media screen and (max-width : 900px) {
+
+        .homeDiv1 {
+            .homeInput {
+                width: 300px;
+
+                input {
+                    width: 250px;
+                }
+            }
+        }
+
+        .homeDiv2 {
+            img {
+                width: 100%;
+            }
+        }
+
+        .homeDiv3 {
+            &>div {
+                font-size: 20px;
+
+                img {
+                    height: 30px;
+                }
+            }
+        }
+
+        .homeDiv4 {
+            &>div {
+                font-size: 15px;
+
+                img {
+                    height: 30px;
+                }
+            }
+        }
+
+    }
+
+    @media screen and (max-width : 600px) {
+        display: grid;
+        grid-template-rows: .1fr .6fr .2fr .1fr;
+
+        .homeDiv1 {
+
+            .homeLogo {
+                img {
+                    height: 40px;
+                }
+
+                b {
+                    font-size: 25px;
+                }
+            }
+
+            .homeInput {
+                width: 130px;
+
+                input {
+                    height: 30px;
+                    width: 100px;
+                }
+
+                img {
+                    padding: 5px;
+                    height: 25px;
+                }
+            }
+        }
+
+        .homeDiv3 {
+            order: 2;
+
+            &>div:nth-child(2),
+            &>div:nth-child(3) {
+                display: none;
+            }
+        }
+
+        .homeDiv4 {
+            @include flex(column, flex-end, center, 0px, wrap);
+            order: 1;
+
+            &>div {
+                font-size: 17px;
+            }
+        }
+
+        .hamburger {
+    
+            &>div {
+                padding: 10px 20px;
+                font-size: 15px;
+            }
+    
+            .theme {
+                @include flex(row, center, center, 20px, wrap);
+                width: 200px;
+                font-size: 12px;
+                
+                img {
+                    height: 22px;
+                }
+
+            }
+        }
+
+    }
+
+}
+
+#down {
+    rotate: 90deg;
+    width: 40px;
+}

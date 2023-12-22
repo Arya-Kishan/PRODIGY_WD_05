@@ -1,0 +1,22 @@
+@mixin flex($dir, $jC, $aI, $gap, $w) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $jC;
+    align-items: $aI;
+    gap: $gap;
+    flex-wrap: $w;
+}
+
+@mixin posA($t,$l) {
+    position: absolute;
+    top: $t;
+    left: $l;
+    transform: translate(-50%, -50%);
+}
+
+@mixin posF() {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
