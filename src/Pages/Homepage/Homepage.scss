@@ -237,6 +237,9 @@
             &>div {
                 font-size: 17px;
             }
+            &>div:nth-child(2) {
+                display: none;
+            }
         }
 
         .hamburger {

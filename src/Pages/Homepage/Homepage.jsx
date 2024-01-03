@@ -86,6 +86,12 @@ export default function Homepage() {
     const handleBackground2 = () => {
         setBg("linear-gradient(aqua, rgb(2, 71, 71))")
     }
+    const handleSearchQuery = (e)=>{
+        console.log(e.key);
+        if (e.key == "Enter" &&  inputRef.current?.value.length > 0) {
+            fetchData(inputRef.current.value)
+        }
+    }
 
     useEffect(() => {
         getCity();
@@ -110,7 +116,7 @@ export default function Homepage() {
                         </div>
 
                         <div className='homeInput'>
-                            <input type="text" ref={inputRef} />
+                            <input type="text" onKeyUp={handleSearchQuery} ref={inputRef} />
                             <img onClick={handleChange} src={search} alt="" srcSet="" />
                         </div>
 

@@ -1,11 +1,11 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   color: white;
 }
 
-.circle1{
+.circle1 {
   height: 100px;
   width: 100px;
   border-radius: 50%;
@@ -16,7 +16,8 @@
   left: 10%;
   z-index: 1;
 }
-.circle2{
+
+.circle2 {
   height: 150px;
   width: 150px;
   border-radius: 50%;
@@ -28,20 +29,30 @@
   z-index: 1;
 }
 
-@keyframes vibrate {
-  0%{
-      transform: translatey(0px);
-  }
-  50%{
-      transform: translatey(-10px);
+@media screen and (max-width : 550px) {
+  
+.circle2 {
+  top: 60%;
+  left: 50%;
+  z-index: 1;
+}
+}
 
+@keyframes vibrate {
+  0% {
+    transform: translatey(0px);
   }
-  100%{
-      transform: translatey(0px);
+
+  50% {
+    transform: translatey(-10px);
+  }
+
+  100% {
+    transform: translatey(0px);
   }
 }
 
-button{
+button {
   background: transparent;
   border: none;
   outline: none;
