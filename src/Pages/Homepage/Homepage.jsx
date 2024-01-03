@@ -20,6 +20,7 @@ import hamburger from '../../assets/hamburger.png'
 import sun from '../../assets/sun.png'
 import moon from '../../assets/moon.png'
 import Loading from '../../components/Loading'
+import Speech from '../Speech/Speech'
 
 let IMG = "";
 export default function Homepage() {
@@ -36,9 +37,6 @@ export default function Homepage() {
         navigate(`/detail/${data}`)
     }
 
-    const handleChange = () => {
-        fetchData(inputRef.current.value)
-    }
 
     const getCity = async () => {
         let { data } = await axios.get("https://ipinfo.io/json?token=ec577bd5049a0b")
@@ -62,7 +60,6 @@ export default function Homepage() {
 
     const fetchData = async (city) => {
         let { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5a327cef9fddb1d9a16407f4d4b77644&units=metric`)
-        console.log(data);
 
         if (data?.main?.temp > 25) {
             IMG = summer
@@ -86,9 +83,8 @@ export default function Homepage() {
     const handleBackground2 = () => {
         setBg("linear-gradient(aqua, rgb(2, 71, 71))")
     }
-    const handleSearchQuery = (e)=>{
-        console.log(e.key);
-        if (e.key == "Enter" &&  inputRef.current?.value.length > 0) {
+    const handleSearchQuery = (e) => {
+        if (e.key == "Enter" && inputRef.current?.value.length > 0) {
             fetchData(inputRef.current.value)
         }
     }
@@ -116,8 +112,11 @@ export default function Homepage() {
                         </div>
 
                         <div className='homeInput'>
+
                             <input type="text" onKeyUp={handleSearchQuery} ref={inputRef} />
-                            <img onClick={handleChange} src={search} alt="" srcSet="" />
+
+                            <Speech input={inputRef} fetchData={fetchData} />
+
                         </div>
 
                         <div className='more' onClick={() => handleDetail(`${data.coord.lat},${data.coord.lon}`)}>
@@ -158,8 +157,8 @@ export default function Homepage() {
                     <div className='homeDiv4'>
 
                         <div>
-                            <img src={country} alt="" />
-                            <span>Country : <b>{data.sys.country}</b> </span>
+                            <img  className="countryImg" src={country} alt="" />
+                            <span className="countryText" >Country : <b>{data.sys.country}</b> </span>
                             <img src={city1} alt="" />
                             <span>City : <b>{data.name}</b></span>
                         </div>
@@ -211,6 +210,7 @@ export default function Homepage() {
 
             <div className="circle1"></div>
             <div className="circle2"></div>
+
         </div>
     )
 }

@@ -34,7 +34,7 @@
         .homeInput {
             border: 2px solid white;
             @include flex(row, flex-start, center, 0px, wrap);
-            width: 400px;
+            width: 450px;
 
             input {
                 border: none;
@@ -123,7 +123,7 @@
         }
 
         &>div {
-            background: linear-gradient(rgb(1, 109, 109),rgb(0, 175, 175));
+            background: linear-gradient(rgb(1, 109, 109), rgb(0, 175, 175));
             border-radius: 20px;
             height: 35vh;
             @include flex(column, flex-start, flex-start, 10px, wrap);
@@ -138,7 +138,7 @@
             position: absolute;
             right: 0;
             bottom: 0;
-            
+
             &>div {
                 cursor: pointer;
                 @include flex(row, center, flex-end, 10px, wrap);
@@ -154,7 +154,7 @@
 
         .homeDiv1 {
             .homeInput {
-                width: 300px;
+                width: 340px;
 
                 input {
                     width: 250px;
@@ -207,7 +207,7 @@
             }
 
             .homeInput {
-                width: 130px;
+                width: 150px;
 
                 input {
                     height: 30px;
@@ -237,23 +237,32 @@
             &>div {
                 font-size: 17px;
             }
+
+            &>div:nth-child(1) {
+
+                .countryImg,
+                .countryText {
+                    display: none;
+                }
+            }
+
             &>div:nth-child(2) {
                 display: none;
             }
         }
 
         .hamburger {
-    
+
             &>div {
                 padding: 10px 20px;
                 font-size: 15px;
             }
-    
+
             .theme {
                 @include flex(row, center, center, 20px, wrap);
                 width: 200px;
                 font-size: 12px;
-                
+
                 img {
                     height: 22px;
                 }
