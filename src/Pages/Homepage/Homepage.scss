@@ -23,11 +23,11 @@
             @include flex(row, center, center, 0px, wrap);
 
             img {
-                height: 60px;
+                height: 50px;
             }
 
             b {
-                font-size: 40px;
+                font-size: 30px;
             }
         }
 
@@ -48,7 +48,8 @@
 
             img {
                 padding: 5px;
-                height: 40px;
+                height: 35px;
+                cursor: pointer;
             }
         }
 
@@ -56,7 +57,7 @@
             position: absolute;
             top: 100%;
             right: -15px;
-            @include flex(row, flex-end, center, 0px, wrap);
+            @include flex(row, flex-end, center, 10px, wrap);
             padding: 10px;
             cursor: pointer;
 
@@ -65,7 +66,7 @@
             }
 
             img {
-                height: 50px;
+                height: 40px;
             }
 
             &:hover {
@@ -85,7 +86,7 @@
 
         &>div {
             @include flex(row, center, center, 10px, wrap);
-            font-size: 30px;
+            font-size: 20px;
 
             img {
                 height: 50px;
@@ -99,7 +100,7 @@
 
         &>div {
             @include flex(row, space-between, center, 10px, wrap);
-            font-size: 25px;
+            font-size: 15px;
 
             img {
                 height: 40px;
