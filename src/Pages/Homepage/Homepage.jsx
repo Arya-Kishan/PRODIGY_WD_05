@@ -39,9 +39,25 @@ export default function Homepage() {
 
 
     const getCity = async () => {
-        let { data } = await axios.get("https://ipinfo.io/json?token=ec577bd5049a0b")
-        console.log(data.city);
-        fetchData(data.city);
+
+        async function success(position) {
+            const lat = Math.round(position.coords.latitude * 100) / 100;
+            const lon = Math.round(position.coords.longitude * 100) / 100;
+            let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=5a327cef9fddb1d9a16407f4d4b77644&units=metric`)
+            let data = await res.json();
+            console.log(data.name);
+            fetchData(data.name);
+        }
+
+        function error() {
+            alert("GEOLOCATION API NOT ALLOWED ,RANDOM LOCATION WEATHER WILL BE SHOWED")
+            setData("patna")
+        }
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, error)
+        }
+
     }
 
     const handleMore1 = () => {
@@ -89,6 +105,12 @@ export default function Homepage() {
         }
     }
 
+    const handleSearchQuery2 = (e) => {
+        if (inputRef.current?.value.length > 0) {
+            fetchData(inputRef.current.value)
+        }
+    }
+
     useEffect(() => {
         getCity();
         const ctx = gsap.context(() => {
@@ -116,6 +138,8 @@ export default function Homepage() {
                             <input type="text" onKeyUp={handleSearchQuery} ref={inputRef} />
 
                             <Speech input={inputRef} fetchData={fetchData} />
+
+                            <div onClick={handleSearchQuery2}><img src={search} alt="" srcSet="" /></div>
 
                         </div>
 
@@ -157,7 +181,7 @@ export default function Homepage() {
                     <div className='homeDiv4'>
 
                         <div>
-                            <img  className="countryImg" src={country} alt="" />
+                            <img className="countryImg" src={country} alt="" />
                             <span className="countryText" >Country : <b>{data.sys.country}</b> </span>
                             <img src={city1} alt="" />
                             <span>City : <b>{data.name}</b></span>

@@ -34,7 +34,7 @@
         .homeInput {
             border: 2px solid white;
             @include flex(row, flex-start, center, 0px, wrap);
-            width: 450px;
+            width: fit-content;
 
             input {
                 border: none;
@@ -42,6 +42,8 @@
                 height: 40px;
                 width: 350px;
                 color: aqua;
+                font-weight: bold;
+                letter-spacing: 1.5px;
             }
 
             img {
@@ -154,7 +156,6 @@
 
         .homeDiv1 {
             .homeInput {
-                width: 340px;
 
                 input {
                     width: 250px;
@@ -193,6 +194,7 @@
     @media screen and (max-width : 600px) {
         display: grid;
         grid-template-rows: .1fr .6fr .2fr .1fr;
+        padding: 5px 10px 10px 21px;
 
         .homeDiv1 {
 
@@ -201,17 +203,16 @@
                     height: 40px;
                 }
 
-                b {
-                    font-size: 25px;
+                span {
+                    display: none;
                 }
             }
 
             .homeInput {
-                width: 150px;
 
                 input {
                     height: 30px;
-                    width: 100px;
+                    width: 120px;
                 }
 
                 img {
