@@ -33,7 +33,7 @@
 
         .homeInput {
             border: 2px solid white;
-            @include flex(row, flex-start, center, 0px, wrap);
+            @include flex(row, flex-start, normal, 0px, wrap);
             width: fit-content;
 
             input {
@@ -126,7 +126,6 @@
         }
 
         &>div {
-            background: linear-gradient(rgb(1, 109, 109), rgb(0, 175, 175));
             border-radius: 20px;
             height: 35vh;
             @include flex(column, flex-start, flex-start, 10px, wrap);

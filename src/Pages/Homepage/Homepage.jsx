@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './Homepage.scss'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -21,17 +21,19 @@ import sun from '../../assets/sun.png'
 import moon from '../../assets/moon.png'
 import Loading from '../../components/Loading'
 import Speech from '../Speech/Speech'
+import { myContext } from '../../ContextApi/Context'
 
 let IMG = "";
 export default function Homepage() {
 
     const [data, setData] = useState(null)
     const [show, setShow] = useState(false)
-    const [bg, setBg] = useState("linear-gradient(aqua,rgb(10, 184, 184))")
     const inputRef = useRef(null)
     const parent = useRef(null)
     const ham = useRef(null)
     const navigate = useNavigate()
+    const { mode, setMode } = useContext(myContext)
+    console.log(mode);
 
     const handleDetail = (data) => {
         navigate(`/detail/${data}`)
@@ -93,12 +95,6 @@ export default function Homepage() {
 
     }
 
-    const handleBackground1 = () => {
-        setBg("black")
-    }
-    const handleBackground2 = () => {
-        setBg("linear-gradient(aqua, rgb(2, 71, 71))")
-    }
     const handleSearchQuery = (e) => {
         if (e.key == "Enter" && inputRef.current?.value.length > 0) {
             fetchData(inputRef.current.value)
@@ -122,7 +118,7 @@ export default function Homepage() {
     }, [])
 
     return (
-        <div className='mainHome' ref={parent} style={{ background: bg }}>
+        <div className='mainHome' ref={parent} style={{ background: (mode ? "linear-gradient(aqua,rgb(10, 184, 184))" : "black") }}>
             {
                 data ? (<>
 
@@ -204,7 +200,7 @@ export default function Homepage() {
 
                     {!show ? <img onClick={handleMore1} src={hamburger} alt="" /> : <img id='down' onClick={handleMore2} src={more} alt="" />}
 
-                    <div>
+                    <div style={{ background: (mode ? "linear-gradient(aqua,rgb(10, 184, 184))" : "black") }}>
                         <p>Weather : {data.weather[0].description}</p>
                         <p>Temperature : {data.main.temp}&#8451;</p>
                         <p>Max Temperature : {data.main.temp_max}&#8451;</p>
@@ -219,11 +215,11 @@ export default function Homepage() {
                     </div>
 
                     <div className='theme'>
-                        <div onClick={handleBackground1}>
+                        <div onClick={e => setMode(false)}>
                             <img src={moon} alt="" />
                             <i>Dark</i>
                         </div>
-                        <div onClick={handleBackground2}>
+                        <div onClick={e => setMode(true)}>
                             <img src={sun} alt="" />
                             <i>Light</i>
                         </div>
