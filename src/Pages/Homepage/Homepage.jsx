@@ -33,7 +33,6 @@ export default function Homepage() {
     const ham = useRef(null)
     const navigate = useNavigate()
     const { mode, setMode } = useContext(myContext)
-    console.log(mode);
 
     const handleDetail = (data) => {
         navigate(`/detail/${data}`)

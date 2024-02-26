@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Detail.scss'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
@@ -12,12 +12,14 @@ import pressure from '../../assets/pressure.png'
 import humid from '../../assets/humid.png'
 import temp from '../../assets/temp.png'
 import Loading from '../../components/Loading'
+import { myContext } from '../../ContextApi/Context'
 
 export default function Detail() {
 
   const [data, setData] = useState(null)
   const [data11, setData11] = useState(null)
   const params = useParams()
+  const { mode, setMode } = useContext(myContext)
 
   const handleBack = () => {
     window.history.back();
@@ -51,7 +53,7 @@ export default function Detail() {
   }, [])
 
   return (
-    <div className='mainDetail'>
+    <div className='mainDetail' style={{ background: (mode ? "linear-gradient(aqua,rgb(10, 184, 184))" : "black") }}>
       {data ? (<>
 
         <div className='detailDiv1'>
