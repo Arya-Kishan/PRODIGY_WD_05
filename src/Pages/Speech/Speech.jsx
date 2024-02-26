@@ -46,7 +46,14 @@ export default function Speech({ fetchData, input }) {
             <div className='speech'>
                 <img onClick={startListening1} src={mic} alt="" srcSet="" />
             </div>
-            <img className='listenGirl' ref={ref} src={listenGif} alt="" srcSet="" />
+
+            <div className='listeningBack' ref={ref}>
+                <div>
+                    <p>Listening : {listening ? "ON" : "OFF"}</p>
+                    <p>Listening : {transcript}</p>
+                </div>
+                <img src={listenGif} alt="" srcSet="" />
+            </div>
         </>
     )
 }

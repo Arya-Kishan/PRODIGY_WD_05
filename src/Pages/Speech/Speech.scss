@@ -1,11 +1,17 @@
-.speech {
-    background-color: white;
-}
-
-.listenGirl {
-    scale: 4;
+.listeningBack{
     position: fixed;
-    right: 50%;
-    top: 10%;
+    left: 0;
+    top: 0%;
+    width: 100vw;
+    height: 120px;
+    background :linear-gradient(black,aqua);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
     display: none;
+    img{
+        scale: 4;
+    }
 }

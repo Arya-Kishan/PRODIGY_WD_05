@@ -8,11 +8,6 @@
     position: relative;
     overflow: hidden;
 
-    &>div {
-        z-index: 2;
-    }
-
-
 
     .homeDiv1 {
         @include flex(row, space-between, center, 0px, wrap);
